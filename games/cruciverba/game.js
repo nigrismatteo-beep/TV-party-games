@@ -1,253 +1,85 @@
-// ===============================
-// CRUCIVERBA FINALE - GAME ENGINE
-// ===============================
+let current=words[0];
+let timer=45;
 
-// Indice parola corrente
-let currentWordIndex = 0;
+const definition=document.getElementById('definition');
+const letters=document.getElementById('letters');
+const timerBox=document.getElementById('timer');
 
-// Oggetto parola attuale
-let current = words[currentWordIndex];
+let visible=[];
 
-// Array lettere rivelate
-let revealed = [];
+function init(){
 
-// Timer partita
-let timer = 45;
+letters.innerHTML='';
+definition.innerText=current.definition;
 
-// Stato gioco
-let gameEnded = false;
+visible=[];
 
-// Elementi HTML
-const definitionElement = document.getElementById("definition");
-const lettersElement = document.getElementById("letters");
-
-// ===============================
-// INIZIALIZZAZIONE GIOCO
-// ===============================
-
-function initGame() {
-
-    // Reset array lettere
-    revealed = [];
-
-    // Inserisce definizione
-    definitionElement.innerText = current.definition;
-
-    // Tutte le lettere nascoste
-    for(let i = 0; i < current.word.length; i++) {
-        revealed.push(false);
-    }
-
-    // Mostra automaticamente prima lettera
-    revealed[0] = true;
-
-    // Render grafico
-    renderWord();
-
-    // Avvio timer
-    startTimer();
-
+for(let i=0;i<current.word.length;i++){
+visible.push(false);
 }
 
-// ===============================
-// RENDER GRAFICO PAROLA
-// ===============================
-
-function renderWord() {
-
-    // Svuota contenitore
-    lettersElement.innerHTML = "";
-
-    // Creazione caselle lettere
-    for(let i = 0; i < current.word.length; i++) {
-
-        const div = document.createElement("div");
-
-        div.classList.add("letter");
-
-        // Se lettera visibile
-        if(revealed[i]) {
-            div.innerText = current.word[i];
-
-            // Glow giallo TV
-            div.style.boxShadow = "0 0 20px yellow";
-        }
-        else {
-            div.innerText = "";
-        }
-
-        lettersElement.appendChild(div);
-
-    }
-
+visible[0]=true;
+render();
 }
 
-// ===============================
-// MOSTRA LETTERA RANDOM
-// ===============================
+function render(){
+letters.innerHTML='';
 
-function revealLetter() {
+for(let i=0;i<current.word.length;i++){
 
-    // Fine gioco
-    if(gameEnded) return;
+const div=document.createElement('div');
+div.classList.add('letter');
 
-    let hiddenIndexes = [];
-
-    // Cerca lettere nascoste
-    for(let i = 0; i < current.word.length; i++) {
-
-        if(!revealed[i]) {
-            hiddenIndexes.push(i);
-        }
-
-    }
-
-    // Se tutte mostrate
-    if(hiddenIndexes.length === 0) {
-
-        alert("Tutte le lettere sono state rivelate!");
-        return;
-
-    }
-
-    // Estrazione casuale
-    let randomIndex = hiddenIndexes[
-        Math.floor(Math.random() * hiddenIndexes.length)
-    ];
-
-    // Rende visibile lettera
-    revealed[randomIndex] = true;
-
-    // Aggiorna grafica
-    renderWord();
-
+if(visible[i]){
+div.innerText=current.word[i];
 }
 
-// ===============================
-// TIMER
-// ===============================
-
-function startTimer() {
-
-    const timerElements = document.querySelectorAll(".team");
-
-    const interval = setInterval(() => {
-
-        if(gameEnded) {
-            clearInterval(interval);
-            return;
-        }
-
-        timer--;
-
-        // Formattazione 00:00
-        let seconds = timer.toString().padStart(2, '0');
-
-        timerElements[0].innerText = `00:${seconds}`;
-        timerElements[1].innerText = `00:${seconds}`;
-
-        // Ultimi 10 secondi
-        if(timer <= 10) {
-
-            timerElements[0].style.color = "red";
-            timerElements[1].style.color = "red";
-
-            timerElements[0].style.textShadow = "0 0 20px red";
-            timerElements[1].style.textShadow = "0 0 20px red";
-
-        }
-
-        // Tempo finito
-        if(timer <= 0) {
-
-            gameEnded = true;
-
-            clearInterval(interval);
-
-            alert("TEMPO SCADUTO!");
-
-        }
-
-    }, 1000);
+letters.appendChild(div);
 
 }
-
-// ===============================
-// CONTROLLO RISPOSTA
-// ===============================
-
-function checkAnswer() {
-
-    // Input risposta
-    const answer = prompt("Inserisci la parola:");
-
-    if(answer === null) return;
-
-    // Confronto
-    if(answer.toUpperCase() === current.word) {
-
-        gameEnded = true;
-
-        alert("CORRETTO! HAI VINTO!");
-
-        // Glow verde vittoria
-        document.body.style.boxShadow = "inset 0 0 200px green";
-
-    }
-    else {
-
-        alert("RISPOSTA ERRATA!");
-
-        // Flash rosso errore
-        document.body.style.boxShadow = "inset 0 0 200px red";
-
-        setTimeout(() => {
-            document.body.style.boxShadow = "none";
-        }, 500);
-
-    }
-
 }
 
-// ===============================
-// NUOVA PAROLA
-// ===============================
+function revealLetter(){
 
-function nextWord() {
+let hidden=[];
 
-    currentWordIndex++;
-
-    if(currentWordIndex >= words.length) {
-        currentWordIndex = 0;
-    }
-
-    current = words[currentWordIndex];
-
-    timer = 45;
-
-    gameEnded = false;
-
-    initGame();
-
+for(let i=0;i<visible.length;i++){
+if(!visible[i]){
+hidden.push(i);
+}
 }
 
-// ===============================
-// CREAZIONE PULSANTI DINAMICI
-// ===============================
+if(hidden.length===0)return;
 
-const controls = document.querySelector('.controls');
+let random=hidden[Math.floor(Math.random()*hidden.length)];
+visible[random]=true;
 
-// Pulsante risposta
-const answerButton = document.createElement('button');
-answerButton.innerText = 'RISPONDI';
-answerButton.onclick = checkAnswer;
-controls.appendChild(answerButton);
+render();
+}
 
-// Pulsante nuova parola
-const nextButton = document.createElement('button');
-nextButton.innerText = 'NUOVA PAROLA';
-nextButton.onclick = nextWord;
-controls.appendChild(nextButton);
+function checkAnswer(){
 
-// Avvio gioco
-initGame();
+let answer=prompt('Inserisci parola');
+
+if(answer===null)return;
+
+if(answer.toUpperCase()===current.word){
+alert('CORRETTO');
+location.reload();
+}else{
+alert('ERRATO');
+}
+}
+
+setInterval(()=>{
+timer--;
+timerBox.innerText=timer;
+
+if(timer<=0){
+alert('TEMPO SCADUTO');
+location.reload();
+}
+
+},1000);
+
+init();

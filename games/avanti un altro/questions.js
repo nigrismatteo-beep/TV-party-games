@@ -1,21 +1,12 @@
-const questions = [
-
-{
-    question: "Quale animale abbaia?",
-    correct: "Cane",
-    wrong: "Gatto"
-},
-
-{
-    question: "Capitale d'Italia?",
-    correct: "Roma",
-    wrong: "Milano"
-},
-
-{
-    question: "Che colore ha il cielo?",
-    correct: "Blu",
-    wrong: "Rosso"
-}
-
+const questions=[
+"Di che colore è il cielo?",
+"Quanto fa 2+2?",
+"Capitale d'Italia?",
+"Che animale abbaia?",
+"Quanti giorni ha una settimana?",
+"Qual è il contrario di caldo?",
+"Che forma ha una ruota?",
+"Che bevanda si fa col caffè?",
+"Che animale fa miao?",
+"Che lingua si parla in Italia?"
 ];

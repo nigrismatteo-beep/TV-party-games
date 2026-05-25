@@ -1,96 +1,38 @@
-let currentQuestion = 0;
-let progress = 0;
-let timer = 150;
+let index=0;
+let score=0;
 
-const questionElement = document.getElementById("question");
-const wrongBtn = document.getElementById("wrongBtn");
-const correctBtn = document.getElementById("correctBtn");
-const progressElement = document.getElementById("progress");
-const timerElement = document.getElementById("timer");
+const question=document.getElementById('question');
+const counter=document.getElementById('counter');
 
-function renderQuestion() {
-
-    const q = questions[currentQuestion];
-
-    questionElement.innerText = q.question;
-
-    wrongBtn.innerText = q.wrong;
-    correctBtn.innerText = q.correct;
-
+function loadQuestion(){
+question.innerText=questions[index];
+counter.innerText=score+' / 21';
 }
 
-wrongBtn.onclick = () => {
+function correct(){
+score++;
+nextQuestion();
 
-    progress++;
-
-    updateProgress();
-
-    nextQuestion();
-
+if(score>=21){
+alert('HAI VINTO');
+location.reload();
+}
 }
 
-correctBtn.onclick = () => {
-
-    progress = 0;
-
-    updateProgress();
-
-    alert("Hai sbagliato! Hai dato la risposta corretta.");
-
+function wrong(){
+score--;
+if(score<0){
+score=0;
+}
+nextQuestion();
 }
 
-function nextQuestion() {
-
-    currentQuestion++;
-
-    if(currentQuestion >= questions.length) {
-        currentQuestion = 0;
-    }
-
-    renderQuestion();
-
+function nextQuestion(){
+index++;
+if(index>=questions.length){
+index=0;
+}
+loadQuestion();
 }
 
-function updateProgress() {
-
-    progressElement.innerHTML = "";
-
-    for(let i = 0; i < 21; i++) {
-
-        const box = document.createElement("div");
-
-        box.classList.add("progress-box");
-
-        if(i < progress) {
-            box.style.background = "yellow";
-        }
-
-        progressElement.appendChild(box);
-
-    }
-
-    if(progress >= 21) {
-        alert("HAI VINTO!");
-    }
-
-}
-
-function startTimer() {
-
-    setInterval(() => {
-
-        timer--;
-
-        timerElement.innerText = timer;
-
-        if(timer <= 0) {
-            alert("Tempo scaduto!");
-        }
-
-    }, 1000);
-
-}
-
-renderQuestion();
-updateProgress();
-startTimer();
+loadQuestion();

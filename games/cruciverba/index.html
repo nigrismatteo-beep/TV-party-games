@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Cruciverba</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cruciverba</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="container">
+<div class="timer" id="timer">45</div>
 
-    <div class="timers">
-        <div class="team">00:45</div>
-        <div class="team">00:45</div>
-    </div>
+<div class="definition" id="definition"></div>
 
-    <div id="definition"></div>
+<div class="letters" id="letters"></div>
 
-    <div id="letters"></div>
-
-    <div class="controls">
-        <button onclick="revealLetter()">MOSTRA LETTERA</button>
-    </div>
-
+<div class="buttons">
+<button onclick="revealLetter()">MOSTRA LETTERA</button>
+<button onclick="checkAnswer()">RISPONDI</button>
 </div>
 
 <script src="words.js"></script>

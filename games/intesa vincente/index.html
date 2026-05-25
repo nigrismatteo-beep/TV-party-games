@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Intesa Vincente</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intesa Vincente</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="game-container">
-
-    <div class="top-bar">
-        <div id="timer">60</div>
-        <div id="score">0</div>
-    </div>
-
-    <div id="word">PAROLA</div>
-
-    <div class="buttons">
-        <button onclick="correctWord()">CORRETTA</button>
-        <button onclick="skipWord()">PASSO</button>
-    </div>
-
-    <div class="players">
-        <button onclick="prenota('Marco')">Marco</button>
-        <button onclick="prenota('Luca')">Luca</button>
-        <button onclick="prenota('Giulia')">Giulia</button>
-    </div>
-
-    <div id="selectedPlayer"></div>
-
+<div class="topbar">
+<div class="score" id="score">0</div>
+<div class="timer" id="timer">60</div>
 </div>
 
-<script src="words.js"></script>
+<div class="word-container">
+<div class="word" id="word">PAROLA</div>
+</div>
+
+<div class="controls">
+<button onclick="correctWord()">CORRETTA</button>
+<button onclick="skipWord()">PASSA</button>
+</div>
+
 <script src="game.js"></script>
 </body>
 </html>

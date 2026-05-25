@@ -1,63 +1,53 @@
-let currentIndex = 0;
-let score = 0;
-let timer = 60;
-let prenotato = false;
+const words=[
+"MONTAGNA",
+"COMPUTER",
+"VENEZIA",
+"PIZZA",
+"AEROPORTO",
+"GATTO",
+"TELEFONO",
+"BICICLETTA",
+"MOTORE",
+"CINEMA"
+];
 
-const wordElement = document.getElementById("word");
-const scoreElement = document.getElementById("score");
-const timerElement = document.getElementById("timer");
+let current=0;
+let score=0;
+let time=60;
 
-function updateWord() {
-    wordElement.innerText = parole[currentIndex];
+const word=document.getElementById('word');
+const timer=document.getElementById('timer');
+const scoreBox=document.getElementById('score');
+
+function showWord(){
+word.innerText=words[current];
 }
 
-function correctWord() {
-    score++;
-    scoreElement.innerText = score;
-
-    nextWord();
+function correctWord(){
+score++;
+scoreBox.innerText=score;
+nextWord();
 }
 
-function skipWord() {
-    nextWord();
+function skipWord(){
+nextWord();
 }
 
-function nextWord() {
-    currentIndex++;
-
-    if(currentIndex >= parole.length) {
-        currentIndex = 0;
-    }
-
-    updateWord();
+function nextWord(){
+current++;
+if(current>=words.length){
+current=0;
+}
+showWord();
 }
 
-function startTimer() {
-
-    setInterval(() => {
-
-        timer--;
-
-        timerElement.innerText = timer;
-
-        if(timer <= 0) {
-            alert("Tempo scaduto!");
-        }
-
-    }, 1000);
-
+setInterval(()=>{
+time--;
+timer.innerText=time;
+if(time<=0){
+alert('TEMPO SCADUTO');
+location.reload();
 }
+},1000);
 
-function prenota(nome) {
-
-    if(prenotato) return;
-
-    prenotato = true;
-
-    document.getElementById("selectedPlayer").innerText =
-        nome + " prenotato!";
-
-}
-
-updateWord();
-startTimer();
+showWord();

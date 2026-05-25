@@ -1,18 +1,14 @@
-const words = [
-
+const words=[
 {
-    definition: "Chi dirige un film",
-    word: "REGISTA"
+word:'COMPUTER',
+definition:'Macchina elettronica'
 },
-
 {
-    definition: "Capitale d'Italia",
-    word: "ROMA"
+word:'VENEZIA',
+definition:'Città dei canali'
 },
-
 {
-    definition: "Pianeta dove viviamo",
-    word: "TERRA"
+word:'PIZZA',
+definition:'Piatto italiano famoso'
 }
-
 ];

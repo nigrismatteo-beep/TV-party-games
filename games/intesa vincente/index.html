@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Intesa Vincente</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game-container">
+
+    <div class="top-bar">
+        <div id="timer">60</div>
+        <div id="score">0</div>
+    </div>
+
+    <div id="word">PAROLA</div>
+
+    <div class="buttons">
+        <button onclick="correctWord()">CORRETTA</button>
+        <button onclick="skipWord()">PASSO</button>
+    </div>
+
+    <div class="players">
+        <button onclick="prenota('Marco')">Marco</button>
+        <button onclick="prenota('Luca')">Luca</button>
+        <button onclick="prenota('Giulia')">Giulia</button>
+    </div>
+
+    <div id="selectedPlayer"></div>
+
+</div>
+
+<script src="words.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

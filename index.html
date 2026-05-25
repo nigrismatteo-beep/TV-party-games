@@ -10,11 +10,106 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-    <h1>FUNZIONA</h1>
+    <!-- BACKGROUND -->
+    <div class="background"></div>
+
+    <!-- HEADER -->
+    <header>
+
+        <h1>TV PARTY GAMES</h1>
+
+        <p class="subtitle">
+            Game Night • Discord Edition
+        </p>
+
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <div class="games-container">
+
+            <!-- GIOCO 1 -->
+            <div class="game-card">
+
+                <div class="game-number">
+                    01
+                </div>
+
+                <h2>INTESA VINCENTE</h2>
+
+                <p>
+                    Descrivi le parole senza dirle.
+                    Timer, punteggio e modalità TV.
+                </p>
+
+                <button onclick="openGame('games/intesa-vincente/index.html')">
+                    GIOCA
+                </button>
+
+            </div>
+
+            <!-- GIOCO 2 -->
+            <div class="game-card red">
+
+                <div class="game-number">
+                    02
+                </div>
+
+                <h2>AVANTI UN ALTRO</h2>
+
+                <p>
+                    Dai sempre la risposta sbagliata.
+                    Completa le 21 caselle.
+                </p>
+
+                <button onclick="openGame('games/avanti-un-altro/index.html')">
+                    GIOCA
+                </button>
+
+            </div>
+
+            <!-- GIOCO 3 -->
+            <div class="game-card blue">
+
+                <div class="game-number">
+                    03
+                </div>
+
+                <h2>CRUCIVERBA</h2>
+
+                <p>
+                    Indovina la parola misteriosa.
+                    Rivela lettere progressivamente.
+                </p>
+
+                <button onclick="openGame('games/cruciverba/index.html')">
+                    GIOCA
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            Powered by Discord + GitHub Pages
+        </p>
+
+    </footer>
 
     <script src="app.js"></script>
 

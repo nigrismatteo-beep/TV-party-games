@@ -1,26 +1,125 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cruciverba</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cruciverba Finale · TV Party Games</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="bg-animated">
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="scanlines"></div>
+  </div>
 
-<div class="timer" id="timer">45</div>
+  <!-- SETUP SCREEN -->
+  <div id="screen-setup" class="screen active">
+    <a href="../../index.html" class="back-btn">← HOME</a>
+    <div class="setup-box">
+      <div class="game-badge">GIOCO 03</div>
+      <h1 class="game-title">Cruciverba<br><span>Finale</span></h1>
+      <p class="game-tagline">Indovina la parola nascosta dalla definizione!</p>
 
-<div class="definition" id="definition"></div>
+      <div class="rules-box">
+        <div class="rule-item"><span class="rule-icon">🔤</span><span>Le lettere sono nascoste — indovinarle tutte per vincere</span></div>
+        <div class="rule-item"><span class="rule-icon">💡</span><span>Usa "Scopri Lettera" per rivelare una lettera a caso</span></div>
+        <div class="rule-item"><span class="rule-icon">⏱</span><span>Più lettere scopri, meno punti ottieni</span></div>
+      </div>
 
-<div class="letters" id="letters"></div>
+      <div class="setup-options">
+        <div class="option-group">
+          <label>Modalità Timer</label>
+          <div class="btn-group" id="timer-selector">
+            <button class="opt-btn active" data-value="0">Senza</button>
+            <button class="opt-btn" data-value="60">60s</button>
+            <button class="opt-btn" data-value="90">90s</button>
+            <button class="opt-btn" data-value="120">120s</button>
+          </div>
+        </div>
+        <div class="option-group">
+          <label>Numero di parole</label>
+          <div class="btn-group" id="words-selector">
+            <button class="opt-btn" data-value="5">5</button>
+            <button class="opt-btn active" data-value="10">10</button>
+            <button class="opt-btn" data-value="15">15</button>
+            <button class="opt-btn" data-value="999">∞</button>
+          </div>
+        </div>
+      </div>
 
-<div class="buttons">
-<button onclick="revealLetter()">MOSTRA LETTERA</button>
-<button onclick="checkAnswer()">RISPONDI</button>
-</div>
+      <button class="start-btn" id="start-game-btn">
+        <span>INIZIA IL GIOCO</span>
+        <div class="btn-shine"></div>
+      </button>
+    </div>
+  </div>
 
-<script src="words.js"></script>
-<script src="game.js"></script>
+  <!-- GAME SCREEN -->
+  <div id="screen-game" class="screen">
+    <div class="game-hud">
+      <div class="hud-item">
+        <div class="hud-label">PAROLA</div>
+        <div class="hud-value" id="word-count-display">1 / 10</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-label">PUNTEGGIO</div>
+        <div class="hud-value" id="score-display">0</div>
+      </div>
+      <div class="hud-item hud-timer" id="hud-timer">
+        <div class="hud-label">TEMPO</div>
+        <div class="hud-value timer-value" id="timer-display">—</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-label">LETTERE SCOPERTE</div>
+        <div class="hud-value" id="reveals-display">0</div>
+      </div>
+    </div>
+
+    <div class="game-main">
+      <div class="definition-area">
+        <div class="definition-label">DEFINIZIONE</div>
+        <div class="definition-text" id="definition-text">Caricamento...</div>
+        <div class="word-length-hint" id="word-length-hint"></div>
+      </div>
+
+      <div class="letter-boxes-wrapper">
+        <div class="letter-boxes" id="letter-boxes"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn btn-reveal" id="btn-reveal">
+          <span class="btn-icon">💡</span>
+          <span class="btn-label">SCOPRI LETTERA</span>
+        </button>
+        <button class="action-btn btn-correct" id="btn-correct">
+          <span class="btn-icon">✅</span>
+          <span class="btn-label">INDOVINATA!</span>
+        </button>
+        <button class="action-btn btn-skip" id="btn-skip">
+          <span class="btn-icon">⏭</span>
+          <span class="btn-label">PROSSIMA</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- END SCREEN -->
+  <div id="screen-end" class="screen">
+    <div class="end-box">
+      <div class="end-trophy">🏆</div>
+      <h2 class="end-title">FINE PARTITA!</h2>
+      <div class="end-score-label">Punteggio Totale</div>
+      <div class="end-score" id="end-score">0</div>
+      <div class="end-stats" id="end-stats"></div>
+      <div class="end-actions">
+        <button class="start-btn" id="play-again-btn">GIOCA ANCORA</button>
+        <a href="../../index.html" class="back-home-btn">← TORNA AL MENU</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="words.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>

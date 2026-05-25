@@ -1,38 +1,69 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TV Party Games</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Party Games</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<div class="background"></div>
-
-<div class="container">
-
-<h1>TV PARTY GAMES</h1>
-<p class="subtitle">DISCORD GAME NIGHT</p>
-
-<div class="games">
-
-<button class="game-button purple" onclick="openGame('games/intesa-vincente/index.html')">
-INTESA VINCENTE
-</button>
-
-<button class="game-button red" onclick="openGame('games/avanti-un-altro/index.html')">
-AVANTI UN ALTRO
-</button>
-
-<button class="game-button blue" onclick="openGame('games/cruciverba/index.html')">
-CRUCIVERBA
-</button>
-
-</div>
-</div>
-
-<script src="app.js"></script>
+  <div class="bg-animated">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="scanlines"></div>
+  </div>
+  <main class="homepage">
+    <header class="hero">
+      <div class="title-wrapper">
+        <p class="subtitle-top">🎉 DISCORD GAME NIGHT 🎉</p>
+        <h1 class="main-title">
+          <span class="title-tv">TV</span>
+          <span class="title-party">PARTY</span>
+          <span class="title-games">GAMES</span>
+        </h1>
+        <p class="subtitle-bottom">Seleziona un gioco per iniziare</p>
+      </div>
+    </header>
+    <nav class="game-grid">
+      <a href="games/intesa-vincente/index.html" class="game-card card-intesa">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-icon">🤝</div>
+          <div class="card-number">01</div>
+          <h2 class="card-title">Intesa<br>Vincente</h2>
+          <p class="card-desc">Fai indovinare più parole possibili al tuo team prima che scada il tempo!</p>
+          <div class="card-tag">PAROLE • TEAM • TIMER</div>
+          <div class="card-cta">GIOCA ORA →</div>
+        </div>
+      </a>
+      <a href="games/avanti-un-altro/index.html" class="game-card card-avanti">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-icon">🎯</div>
+          <div class="card-number">02</div>
+          <h2 class="card-title">Avanti un<br>Altro Finale</h2>
+          <p class="card-desc">Rispondi SEMPRE in modo sbagliato! Arriva a 21 risposte sbagliate per vincere.</p>
+          <div class="card-tag">QUIZ • STRATEGIA • 21 RISPOSTE</div>
+          <div class="card-cta">GIOCA ORA →</div>
+        </div>
+      </a>
+      <a href="games/cruciverba/index.html" class="game-card card-cruciverba">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-icon">🔤</div>
+          <div class="card-number">03</div>
+          <h2 class="card-title">Cruciverba<br>Finale</h2>
+          <p class="card-desc">Indovina la parola nascosta partendo dalla definizione. Scopri le lettere una alla volta!</p>
+          <div class="card-tag">LETTERE • DEFINIZIONI • SUSPENSE</div>
+          <div class="card-cta">GIOCA ORA →</div>
+        </div>
+      </a>
+    </nav>
+    <footer class="footer">
+      <p>TV Party Games · Made for Discord Game Nights · <span class="footer-heart">♥</span></p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
 </body>
 </html>

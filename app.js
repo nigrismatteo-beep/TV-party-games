@@ -1,3 +1,6 @@
 function openGame(path){
-window.location.href=path;
+
+window.location.href =
+"/TV-party-games/" + path;
+
 }
